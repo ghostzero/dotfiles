@@ -1,0 +1,6 @@
+[user]
+	email = rene@preuss.io
+	name = René Preuß
+	signingkey = 4320EBEFA0BB3240
+[commit]
+	gpgsign = true

@@ -101,14 +101,9 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # Configuration for git
-git config --global user.email rene@preuss.io
-git config --global user.name "René Preuß"
-git config --global user.signingkey 4320EBEFA0BB3240
-git config --global commit.gpgsign true
 alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
 
-
-# GPG Agent configuration for ssh
+# GPG agent configuration for ssh
 export GPG_TTY="$(tty)"
 export SSH_AUTH_SOCK="/run/user/$UID/gnupg/S.gpg-agent.ssh"
 gpg-connect-agent updatestartuptty /bye > /dev/null

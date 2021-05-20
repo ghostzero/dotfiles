@@ -1,8 +1,8 @@
-#/bin/bash
+#!/bin/bash
 
 # check if we're running as root
 if [[ $EUID -ne 0 ]]; then
-   echo "This script must be run as root" 
+   echo "This script must be run as root"
    exit 1
 fi
 
@@ -16,14 +16,21 @@ if ! grep -q "^deb .*$PHP_PPA" /etc/apt/sources.list /etc/apt/sources.list.d/*; 
 fi
 
 # install all dev tools and php
-sudo apt -y install git snapd openssl curl \
+sudo apt -y install git snapd openssl curl build-essential \
 	wget gnupg2 gnupg-agent dirmngr cryptsetup scdaemon pcscd secure-delete hopenpgp-tools yubikey-personalization \
-	php-common php-curl php-json php-mbstring php-mysql php-xml php-zip php-swoole
+	php-common php-curl php-json php-mbstring php-mysql php-xml php-zip php-swoole php-gd php-imagick \
+	php-redis redis-server mariadb-server flameshot
 
-# gpg --card-edit should now work.
+# "gpg --card-edit" should now work.
 
 # install our gpg key
-curl https://ghostzero.dev/pgp | gpg --import
+curl https://ghostzero.dev/gpg | gpg --import
+
+# add our own package registry
+echo "deb [arch=amd64 trusted=yes] https://deb.ghostzero.dev/ubuntu $(lsb_release -cs) main" | \
+	sudo tee /etc/apt/sources.list.d/ghostzero.list > /dev/null
+
+sudo apt update
 
 # trust your key now with "gpg --edit-key 4320EBEFA0BB3240"
 
@@ -37,3 +44,4 @@ sudo snap install phpstorm --classic
 sudo snap install slack --classic
 sudo snap install datagrip --classic
 sudo snap install discord
+sudo snap install flameshot
