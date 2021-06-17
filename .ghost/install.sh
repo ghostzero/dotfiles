@@ -10,7 +10,7 @@ fi
 LC_ALL=C.UTF-8
 PHP_PPA="ondrej/php"
 
-mkdir -p /etc/apt/sources.list.d/
+sudo mkdir -p /etc/apt/sources.list.d/
 
 if ! grep -q "^deb .*$PHP_PPA" /etc/apt/sources.list /etc/apt/sources.list.d/*; then
     # commands to add the ppa ...
@@ -25,6 +25,10 @@ sudo apt -y install zsh git snapd openssl curl build-essential \
 
 # todo add zsh installer
 # sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+# install google chrome
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+sudo apt install ./google-chrome-stable_current_amd64.deb
 
 # "gpg --card-edit" should now work.
 
