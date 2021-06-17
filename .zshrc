@@ -3,6 +3,7 @@
 
 # Path to your oh-my-zsh installation.
 export ZSH="/home/ghostzero/.oh-my-zsh"
+export PATH=~/.config/composer/vendor/bin:$PATH
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -107,3 +108,9 @@ alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
 export GPG_TTY="$(tty)"
 export SSH_AUTH_SOCK="/run/user/$UID/gnupg/S.gpg-agent.ssh"
 gpg-connect-agent updatestartuptty /bye > /dev/null
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/home/ghostzero/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/home/ghostzero/Downloads/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/home/ghostzero/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/ghostzero/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
