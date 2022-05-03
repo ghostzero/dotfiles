@@ -1,3 +1,7 @@
+#!/bin/sh
+set -e
+set -o noglob
+
 git clone --bare https://github.com/ghostzero/dotfiles.git $HOME/.cfg
 function config {
    /usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME $@
