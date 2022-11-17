@@ -4,11 +4,7 @@
 
 
 ```
-sudo apt install curl
-sudo sh -c "$(curl -fsSL https://raw.github.com/ghostzero/dotfiles/master/.ghost/install.sh)"
-```
-
-
-```
-curl -sfL https://raw.githubusercontent.com/ghostzero/dotfiles/main/.config/ghostzero/cfg-install.sh | sh -
+sudo apt install curl git
+curl -sfL https://raw.githubusercontent.com/ghostzero/dotfiles/main/.config/ghostzero/cfg-install.sh | bash -
+sudo bash .ghost/install.sh
 ```
